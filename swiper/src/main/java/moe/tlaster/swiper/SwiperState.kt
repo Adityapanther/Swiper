@@ -74,6 +74,7 @@ class SwiperState(
         dismissed = true
         _offset.animateTo(maxHeight.toFloat().withSign(_offset.value), initialVelocity = velocity)
         onDismiss.invoke()
+        restore()
     }
 
     private suspend fun restore() {
