@@ -45,7 +45,7 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 groupId = "moe.tlaster"
                 artifactId = "swiper"
-                version = "0.7.2"
+                version = "0.7.3"
 
                 from(components["release"])
             }
