@@ -7,7 +7,7 @@ plugins {
 android {
     namespace = "moe.tlaster.swiper"
 
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 21
@@ -34,7 +34,7 @@ dependencies {
     androidTestImplementation(composeBom)
 
     implementation("androidx.compose.foundation:foundation")
-    testImplementation("junit:junit:4.+")
+    testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
@@ -45,7 +45,7 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 groupId = "moe.tlaster"
                 artifactId = "swiper"
-                version = "0.7.3"
+                version = "0.8.0"
 
                 from(components["release"])
             }

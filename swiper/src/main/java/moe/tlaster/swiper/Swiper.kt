@@ -19,6 +19,9 @@ fun Swiper(
     orientation: Orientation = Orientation.Vertical,
     enabled: Boolean = true,
     reverseDirection: Boolean = false,
+    direction: Direction = Direction.Up,
+    dismissHeight: Float = DismissHeight.HALF,
+    animDurationMillis: Int = 500,
     content: @Composable () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
@@ -27,6 +30,9 @@ fun Swiper(
     ) {
         LaunchedEffect(constraints.maxHeight) {
             state.maxHeight = constraints.maxHeight
+            state.direction = direction
+            state.dismissHeight = dismissHeight
+            state.animDuration = animDurationMillis
         }
         Layout(
             modifier = Modifier.draggable(
@@ -50,11 +56,11 @@ fun Swiper(
                 },
             ),
             content = content,
-        ) { measurables, constraints ->
+        ) { measureScope, constraints ->
             layout(constraints.maxWidth, constraints.maxHeight) {
                 val offset = state.offset
                 val childConstraints = constraints.copy(minWidth = 0, minHeight = 0)
-                measurables
+                measureScope
                     .map {
                         it.measure(childConstraints)
                     }
