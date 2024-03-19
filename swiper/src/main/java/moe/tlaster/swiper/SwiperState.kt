@@ -85,7 +85,7 @@ class SwiperState(
     internal suspend fun fling(velocity: Float) {
         val value = _offset.value
         val calcCurrentHeight =  abs(value) / 1000
-        if(velocity.absoluteValue == 0.0f && calcCurrentHeight > dismissHeight){
+        if(velocity.absoluteValue >= 0.0f && calcCurrentHeight > dismissHeight){
             when {
                 _direction == Direction.Up && value < 0.0 -> {
                     dismiss(velocity)
